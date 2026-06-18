@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Submit evidence or request an investigation from Inland Empire Ghost Hunters."
-    />
+    <meta name="description" content="Submit evidence or request an investigation from Inland Empire Ghost Hunters." />
     <title>Request an Investigation | Inland Empire Ghost Hunters</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -40,16 +37,13 @@
             <p class="hero-kicker">Submit Evidence / Request an Investigation</p>
             <h1 id="request-title">Tell us what has been happening.</h1>
             <p>
-              Use this organized checklist before we decide whether a case is safe, appropriate, and a good fit for an
-              investigation.
+              A confidential intake form for homes, businesses, historic locations, cemeteries, and sensitive private
+              properties across the Inland Empire.
             </p>
           </div>
-          <div class="intake-summary">
-            <strong>Case intake notice</strong>
-            <p>
-              Submitting evidence or an investigation request does not guarantee we will investigate. We review each case
-              first and decide if it is safe, appropriate, and a good fit.
-            </p>
+          <div class="intake-summary locked-file">
+            <strong>Private case intake</strong>
+            <p>Submitting a request does not guarantee an investigation. Each case is reviewed first.</p>
           </div>
         </div>
       </section>
@@ -85,58 +79,68 @@
 
           <form class="request-form" id="investigation-form" action="mailto:contact@inlandempireghosthunters.com" method="post" enctype="text/plain">
             <fieldset>
-              <legend>Basic Info</legend>
+              <legend>Contact Information</legend>
               <div class="form-grid">
                 <label>
                   Name
                   <input name="name" autocomplete="name" required />
                 </label>
                 <label>
-                  Phone number
-                  <input name="phone" autocomplete="tel" />
-                </label>
-                <label>
                   Email
                   <input name="email" type="email" autocomplete="email" required />
                 </label>
                 <label>
-                  City/location of activity
+                  Phone number optional
+                  <input name="phone" autocomplete="tel" />
+                </label>
+                <label>
+                  Best time to contact
+                  <input name="best_time" required />
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Location Details</legend>
+              <div class="form-grid">
+                <label>
+                  City
                   <input name="city" required />
+                </label>
+                <label>
+                  Type of location
+                  <select name="location_type" required>
+                    <option value="">Select one</option>
+                    <option>Home</option>
+                    <option>Business</option>
+                    <option>Historical site</option>
+                    <option>Cemetery</option>
+                    <option>Other location</option>
+                  </select>
                 </label>
               </div>
               <label>
-                Type of location
-                <select name="location_type" required>
-                  <option value="">Select one</option>
-                  <option>Home</option>
-                  <option>Business</option>
-                  <option>Historical site</option>
-                  <option>Cemetery</option>
-                  <option>Other location</option>
-                </select>
+                Areas of the property where activity happens
+                <input name="areas" />
               </label>
             </fieldset>
 
             <fieldset>
-              <legend>What Happened?</legend>
+              <legend>Activity Description</legend>
               <label>
-                Describe the activity
+                Brief description
                 <textarea name="activity_description" rows="5" required></textarea>
               </label>
               <div class="form-grid">
                 <label>
-                  When did it start?
-                  <input name="started" />
+                  How long has this been happening?
+                  <input name="started" required />
                 </label>
                 <label>
                   How often does it happen?
                   <input name="frequency" />
                 </label>
               </div>
-              <label>
-                What areas of the property does it happen in?
-                <input name="areas" />
-              </label>
               <div class="form-grid">
                 <label>
                   Has anyone been touched, scratched, pushed, or physically affected?
@@ -160,9 +164,9 @@
             </fieldset>
 
             <fieldset>
-              <legend>Evidence Upload / Submission</legend>
+              <legend>Permission to Contact</legend>
               <p class="form-note">
-                Select what you have, then email files separately to
+                Select any evidence types you have, then email files separately to
                 <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>.
               </p>
               <div class="check-grid" aria-label="Evidence types">
@@ -172,10 +176,6 @@
                 <label><input type="checkbox" name="evidence" value="security_clips" /> Security camera clips</label>
                 <label><input type="checkbox" name="evidence" value="timeline" /> Written timeline of events</label>
               </div>
-              <label>
-                Best time to contact you
-                <input name="best_time" />
-              </label>
               <label class="permission">
                 <input type="checkbox" name="contact_permission" required />
                 I give permission to be contacted about this request.
@@ -183,10 +183,6 @@
             </fieldset>
 
             <button class="button primary full" type="submit">Prepare Email Request</button>
-            <p class="form-note">
-              Main contact email:
-              <a href="mailto:contact@inlandempireghosthunters.com">contact@inlandempireghosthunters.com</a>
-            </p>
           </form>
         </div>
       </section>
@@ -198,8 +194,9 @@
         <p>Respectful, confidential investigations across the Inland Empire.</p>
       </div>
       <div class="footer-links">
-        <a href="mailto:contact@inlandempireghosthunters.com">contact@inlandempireghosthunters.com</a>
-        <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>
+        <a href="request.html">Request an Investigation</a>
+        <a href="evidence.html">Evidence / YouTube</a>
+        <a href="approach.html">Our Approach</a>
       </div>
     </footer>
 

@@ -122,6 +122,10 @@ a {
   color: var(--text);
 }
 
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
 .site-nav .nav-cta {
   background: rgba(112, 184, 255, 0.12);
   border: 1px solid rgba(112, 184, 255, 0.36);
@@ -263,6 +267,19 @@ h3 {
 
 .button.full {
   width: 100%;
+}
+
+.text-link {
+  color: var(--blue);
+  display: inline-flex;
+  font-weight: 900;
+  margin-top: 12px;
+  text-decoration: none;
+}
+
+.text-link:hover,
+.text-link:focus {
+  text-decoration: underline;
 }
 
 .hero-proof {
@@ -495,10 +512,14 @@ h3 {
   max-width: 800px;
 }
 
+.wide-heading {
+  max-width: 980px;
+}
+
 .process-list {
   display: grid;
   gap: 1px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   margin-top: 38px;
 }
 
@@ -536,8 +557,42 @@ h3 {
 .standards-grid p,
 .request-teaser p,
 .intake-summary p,
+.page-card p,
 .notice li {
   color: var(--muted);
+}
+
+.page-card-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 38px;
+}
+
+.page-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.026)),
+    #0b131d;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-height: 280px;
+  padding: 28px;
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.page-card:hover,
+.page-card:focus {
+  border-color: rgba(112, 184, 255, 0.58);
+  transform: translateY(-2px);
+}
+
+.page-card span {
+  color: var(--blue);
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 900;
+  margin-bottom: 58px;
 }
 
 .process-list article {
@@ -904,6 +959,7 @@ input[type="checkbox"] {
   .standards-layout,
   .request-teaser-inner,
   .request-hero-layout,
+  .page-card-grid,
   .process-list {
     grid-template-columns: 1fr;
   }
@@ -932,6 +988,14 @@ input[type="checkbox"] {
   .process-list article:last-child {
     border-radius: var(--radius);
     min-height: auto;
+  }
+
+  .page-card {
+    min-height: auto;
+  }
+
+  .page-card span {
+    margin-bottom: 26px;
   }
 
   .process-list span {

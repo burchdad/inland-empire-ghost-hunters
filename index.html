@@ -13,7 +13,7 @@
   </head>
   <body>
     <header class="site-header" id="top">
-      <a class="brand" href="#top" aria-label="Inland Empire Ghost Hunters home">
+      <a class="brand" href="index.html#top" aria-label="Inland Empire Ghost Hunters home">
         <span class="brand-mark">IE</span>
         <span>
           <strong>Inland Empire</strong>
@@ -26,11 +26,11 @@
         <span></span>
       </button>
       <nav class="site-nav" id="site-nav">
-        <a href="#approach">Our Approach</a>
-        <a href="#evidence">Evidence / YouTube</a>
-        <a href="#request">Request an Investigation</a>
-        <a href="#join">Join the Team</a>
-        <a class="nav-cta" href="#request">Start a Case</a>
+        <a href="index.html#approach">Our Approach</a>
+        <a href="index.html#evidence">Evidence / YouTube</a>
+        <a href="request.html">Request an Investigation</a>
+        <a href="index.html#join">Join the Team</a>
+        <a class="nav-cta" href="request.html">Start a Case</a>
       </nav>
     </header>
 
@@ -46,7 +46,7 @@
             businesses, and historic locations.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#request">Submit a Request</a>
+            <a class="button primary" href="request.html">Submit a Request</a>
             <a class="button secondary" href="#monitoring">Live Video Monitoring</a>
           </div>
           <div class="hero-proof" aria-label="Investigation standards">
@@ -79,6 +79,21 @@
             <span>Evidence</span>
             <span>Organization</span>
           </div>
+        </div>
+      </section>
+
+      <section class="proof-bar" aria-label="Professional commitments">
+        <div class="proof-item">
+          <span>01</span>
+          <strong>No public evidence without permission</strong>
+        </div>
+        <div class="proof-item">
+          <span>02</span>
+          <strong>No promises that activity is paranormal</strong>
+        </div>
+        <div class="proof-item">
+          <span>03</span>
+          <strong>No private addresses or case details published</strong>
         </div>
       </section>
 
@@ -151,6 +166,29 @@
         </div>
       </section>
 
+      <section class="section standards-section" aria-labelledby="standards-title">
+        <div class="section-inner standards-layout">
+          <div>
+            <p class="eyebrow">Field Standards</p>
+            <h2 id="standards-title">Built for homes, businesses, and sensitive locations.</h2>
+          </div>
+          <div class="standards-grid">
+            <article>
+              <h3>Respectful intake</h3>
+              <p>Requests are reviewed before scheduling so the team understands the setting, safety concerns, and reported activity.</p>
+            </article>
+            <article>
+              <h3>Controlled documentation</h3>
+              <p>Reported activity is compared against camera footage, audio, notes, and possible ordinary explanations.</p>
+            </article>
+            <article>
+              <h3>Private follow-up</h3>
+              <p>Evidence review stays private unless the client gives permission to share clips, photos, location details, or case notes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="privacy" aria-labelledby="privacy-title">
         <div class="section-inner privacy-panel">
           <div>
@@ -164,7 +202,7 @@
         </div>
       </section>
 
-      <section class="section section-muted" id="evidence" aria-labelledby="evidence-title">
+      <section class="section section-muted evidence-section" id="evidence" aria-labelledby="evidence-title">
         <div class="section-inner evidence-layout">
           <div>
             <p class="eyebrow">Evidence / YouTube</p>
@@ -173,9 +211,12 @@
               Selected investigation clips and evidence reviews are shared through our YouTube channel,
               <strong>The Paranormal Observer</strong>.
             </p>
-            <a class="button primary" href="#" aria-label="YouTube link placeholder for The Paranormal Observer">
-              Watch The Paranormal Observer on YouTube
-            </a>
+            <div class="inline-actions">
+              <a class="button primary" href="#" aria-label="YouTube link placeholder for The Paranormal Observer">
+                Watch The Paranormal Observer on YouTube
+              </a>
+              <a class="button secondary" href="request.html">Submit Evidence</a>
+            </div>
             <p class="note">
               Channel link pending. Evidence is shared only when permission has been given.
             </p>
@@ -197,130 +238,21 @@
         </div>
       </section>
 
-      <section class="section" id="request" aria-labelledby="request-title">
-        <div class="section-inner request-layout">
-          <div class="request-copy">
+      <section class="section request-teaser" id="request" aria-labelledby="request-title">
+        <div class="section-inner request-teaser-inner">
+          <div>
             <p class="eyebrow">Submit Evidence / Request an Investigation</p>
-            <h2 id="request-title">Tell us what has been happening</h2>
+            <h2 id="request-title">A dedicated case intake page keeps requests organized.</h2>
             <p>
-              Use this organized checklist before we decide whether a case is safe, appropriate, and a good fit for an
-              investigation.
+              The request page walks visitors through basic info, reported activity, affected areas, evidence notes, and
+              permission to be contacted before the team decides whether to investigate.
             </p>
-            <div class="notice">
-              <strong>Important Notice</strong>
-              <p>
-                Submitting evidence or an investigation request does not guarantee we will investigate. We review each
-                case first and decide if it is safe, appropriate, and a good fit.
-              </p>
-            </div>
-            <div class="spanish">
-              <h3>Hablamos Español</h3>
-              <p>
-                Puede contactarnos en español para solicitar una investigación o compartir lo que está ocurriendo en su
-                hogar o negocio.
-              </p>
-            </div>
           </div>
-
-          <form class="request-form" id="investigation-form" action="mailto:contact@inlandempireghosthunters.com" method="post" enctype="text/plain">
-            <fieldset>
-              <legend>Basic Info</legend>
-              <label>
-                Name
-                <input name="name" autocomplete="name" required />
-              </label>
-              <label>
-                Phone number
-                <input name="phone" autocomplete="tel" />
-              </label>
-              <label>
-                Email
-                <input name="email" type="email" autocomplete="email" required />
-              </label>
-              <label>
-                City/location of activity
-                <input name="city" required />
-              </label>
-              <label>
-                Type of location
-                <select name="location_type" required>
-                  <option value="">Select one</option>
-                  <option>Home</option>
-                  <option>Business</option>
-                  <option>Historical site</option>
-                  <option>Cemetery</option>
-                  <option>Other location</option>
-                </select>
-              </label>
-            </fieldset>
-
-            <fieldset>
-              <legend>What Happened?</legend>
-              <label>
-                Describe the activity
-                <textarea name="activity_description" rows="4" required></textarea>
-              </label>
-              <label>
-                When did it start?
-                <input name="started" />
-              </label>
-              <label>
-                How often does it happen?
-                <input name="frequency" />
-              </label>
-              <label>
-                What areas of the property does it happen in?
-                <input name="areas" />
-              </label>
-              <label>
-                Has anyone been touched, scratched, pushed, or physically affected?
-                <select name="physical_effects">
-                  <option value="">Select one</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                  <option>Unsure</option>
-                </select>
-              </label>
-              <label>
-                Are children, elderly people, or pets affected?
-                <select name="vulnerable_affected">
-                  <option value="">Select one</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                  <option>Unsure</option>
-                </select>
-              </label>
-            </fieldset>
-
-            <fieldset>
-              <legend>Evidence Upload / Submission</legend>
-              <p class="form-note">
-                Uploads are not active yet. Email evidence to
-                <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>.
-              </p>
-              <div class="check-grid" aria-label="Evidence types">
-                <label><input type="checkbox" name="evidence" value="photos" /> Photos</label>
-                <label><input type="checkbox" name="evidence" value="videos" /> Videos</label>
-                <label><input type="checkbox" name="evidence" value="audio" /> Audio/EVP recordings</label>
-                <label><input type="checkbox" name="evidence" value="security_clips" /> Security camera clips</label>
-                <label><input type="checkbox" name="evidence" value="timeline" /> Written timeline of events</label>
-              </div>
-              <label>
-                Best time to contact you
-                <input name="best_time" />
-              </label>
-              <label class="permission">
-                <input type="checkbox" name="contact_permission" required />
-                I give permission to be contacted about this request.
-              </label>
-            </fieldset>
-
-            <button class="button primary full" type="submit">Prepare Email Request</button>
-            <p class="form-note">
-              Main contact email:
-              <a href="mailto:contact@inlandempireghosthunters.com">contact@inlandempireghosthunters.com</a>
-            </p>
-          </form>
+          <div class="request-teaser-card">
+            <strong>Before submitting evidence</strong>
+            <p>Include the date, time, room, what you noticed, who was present, and any possible normal explanations.</p>
+            <a class="button primary full" href="request.html">Open Request Form</a>
+          </div>
         </div>
       </section>
 

@@ -6,6 +6,7 @@ Static, fast-loading starter site for `inlandempireghosthunters.com`.
 
 - Professional dark/blue visual style with no haunted-attraction graphics
 - Home, Our Approach, Evidence / YouTube, Request an Investigation, Service Area, and Join the Team sections
+- Dedicated `request.html` page for investigation requests and evidence submission guidance
 - Live multi-camera video monitoring featured on the homepage
 - Contact email: `contact@inlandempireghosthunters.com`
 - Evidence email: `evidence@inlandempireghosthunters.com`

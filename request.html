@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Submit evidence or request an investigation from Inland Empire Ghost Hunters."
+    />
+    <title>Request an Investigation | Inland Empire Ghost Hunters</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="index.html#top" aria-label="Inland Empire Ghost Hunters home">
+        <span class="brand-mark">IE</span>
+        <span>
+          <strong>Inland Empire</strong>
+          <small>Ghost Hunters</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html#approach">Our Approach</a>
+        <a href="index.html#evidence">Evidence / YouTube</a>
+        <a href="request.html" aria-current="page">Request an Investigation</a>
+        <a href="index.html#join">Join the Team</a>
+        <a class="nav-cta" href="request.html">Start a Case</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero request-page-hero" aria-labelledby="request-title">
+        <div class="section-inner request-hero-layout">
+          <div>
+            <p class="hero-kicker">Submit Evidence / Request an Investigation</p>
+            <h1 id="request-title">Tell us what has been happening.</h1>
+            <p>
+              Use this organized checklist before we decide whether a case is safe, appropriate, and a good fit for an
+              investigation.
+            </p>
+          </div>
+          <div class="intake-summary">
+            <strong>Case intake notice</strong>
+            <p>
+              Submitting evidence or an investigation request does not guarantee we will investigate. We review each case
+              first and decide if it is safe, appropriate, and a good fit.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section request-page-section">
+        <div class="section-inner request-layout request-page-layout">
+          <aside class="request-copy">
+            <div class="notice">
+              <strong>Evidence email</strong>
+              <p>
+                Uploads are not active yet. Email evidence to
+                <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>.
+              </p>
+            </div>
+            <div class="notice">
+              <strong>Please include</strong>
+              <ul>
+                <li>Date and time of the evidence</li>
+                <li>Location or room where it happened</li>
+                <li>What you noticed</li>
+                <li>Whether anyone else was present</li>
+                <li>Possible normal explanations, including pets, cars, wind, plumbing, neighbors, insects, dust, reflections, or electronics</li>
+              </ul>
+            </div>
+            <div class="spanish">
+              <h3>Hablamos Español</h3>
+              <p>
+                Puede contactarnos en español para solicitar una investigación o compartir lo que está ocurriendo en su
+                hogar o negocio.
+              </p>
+            </div>
+          </aside>
+
+          <form class="request-form" id="investigation-form" action="mailto:contact@inlandempireghosthunters.com" method="post" enctype="text/plain">
+            <fieldset>
+              <legend>Basic Info</legend>
+              <div class="form-grid">
+                <label>
+                  Name
+                  <input name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  Phone number
+                  <input name="phone" autocomplete="tel" />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" autocomplete="email" required />
+                </label>
+                <label>
+                  City/location of activity
+                  <input name="city" required />
+                </label>
+              </div>
+              <label>
+                Type of location
+                <select name="location_type" required>
+                  <option value="">Select one</option>
+                  <option>Home</option>
+                  <option>Business</option>
+                  <option>Historical site</option>
+                  <option>Cemetery</option>
+                  <option>Other location</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>What Happened?</legend>
+              <label>
+                Describe the activity
+                <textarea name="activity_description" rows="5" required></textarea>
+              </label>
+              <div class="form-grid">
+                <label>
+                  When did it start?
+                  <input name="started" />
+                </label>
+                <label>
+                  How often does it happen?
+                  <input name="frequency" />
+                </label>
+              </div>
+              <label>
+                What areas of the property does it happen in?
+                <input name="areas" />
+              </label>
+              <div class="form-grid">
+                <label>
+                  Has anyone been touched, scratched, pushed, or physically affected?
+                  <select name="physical_effects">
+                    <option value="">Select one</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Unsure</option>
+                  </select>
+                </label>
+                <label>
+                  Are children, elderly people, or pets affected?
+                  <select name="vulnerable_affected">
+                    <option value="">Select one</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                    <option>Unsure</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Evidence Upload / Submission</legend>
+              <p class="form-note">
+                Select what you have, then email files separately to
+                <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>.
+              </p>
+              <div class="check-grid" aria-label="Evidence types">
+                <label><input type="checkbox" name="evidence" value="photos" /> Photos</label>
+                <label><input type="checkbox" name="evidence" value="videos" /> Videos</label>
+                <label><input type="checkbox" name="evidence" value="audio" /> Audio/EVP recordings</label>
+                <label><input type="checkbox" name="evidence" value="security_clips" /> Security camera clips</label>
+                <label><input type="checkbox" name="evidence" value="timeline" /> Written timeline of events</label>
+              </div>
+              <label>
+                Best time to contact you
+                <input name="best_time" />
+              </label>
+              <label class="permission">
+                <input type="checkbox" name="contact_permission" required />
+                I give permission to be contacted about this request.
+              </label>
+            </fieldset>
+
+            <button class="button primary full" type="submit">Prepare Email Request</button>
+            <p class="form-note">
+              Main contact email:
+              <a href="mailto:contact@inlandempireghosthunters.com">contact@inlandempireghosthunters.com</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Inland Empire Ghost Hunters</strong>
+        <p>Respectful, confidential investigations across the Inland Empire.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:contact@inlandempireghosthunters.com">contact@inlandempireghosthunters.com</a>
+        <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

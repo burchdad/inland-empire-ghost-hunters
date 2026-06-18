@@ -336,7 +336,7 @@ h3 {
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   bottom: 58px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   max-width: 370px;
   padding: 22px;
   position: absolute;
@@ -418,9 +418,11 @@ h3 {
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   color: var(--steel);
   font-weight: 800;
   padding: 14px 16px;
+  backdrop-filter: blur(12px);
 }
 
 .split,
@@ -476,7 +478,7 @@ h3 {
     #0b131d;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
   position: relative;
 }
@@ -612,6 +614,8 @@ h3 {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
 }
 
 .standards-grid article {
@@ -640,6 +644,7 @@ h3 {
     #0b131d;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.26);
   min-height: 280px;
   padding: 28px;
   text-decoration: none;
@@ -677,6 +682,7 @@ h3 {
     rgba(11, 19, 29, 0.78);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.26);
   min-height: 180px;
   padding: 24px;
 }
@@ -812,6 +818,7 @@ h3 {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.24);
   overflow: hidden;
   text-decoration: none;
   transition: border-color 160ms ease, transform 160ms ease;
@@ -940,7 +947,8 @@ h3 {
     rgba(11, 19, 29, 0.74);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
   overflow: hidden;
 }
 
@@ -977,6 +985,11 @@ h3 {
 
 .service-lockup h3 {
   font-size: 1.85rem;
+  margin-bottom: 12px;
+}
+
+.service-note {
+  color: var(--muted);
   margin-bottom: 22px;
 }
 
@@ -1138,7 +1151,8 @@ h3 {
 }
 
 .request-form {
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
   padding: 30px;
 }
 

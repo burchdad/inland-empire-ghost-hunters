@@ -13,6 +13,7 @@ Static, fast-loading starter site for `inlandempireghosthunters.com`.
 - Request form that prepares an email draft
 - Evidence submission checklist and privacy notice
 - Spanish contact paragraph
+- YouTube channel integration for The Paranormal Observer: `https://www.youtube.com/@Andy-xw5eb/featured`
 
 ## Launch notes
 

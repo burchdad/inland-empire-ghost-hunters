@@ -315,18 +315,18 @@ a {
 }
 
 .hero-camera-wall {
-  bottom: 62px;
+  bottom: 88px;
   display: grid;
-  gap: 16px;
-  grid-template-columns: 1.15fr 0.72fr 0.9fr;
-  grid-template-rows: 1.05fr 0.82fr;
-  height: min(420px, 56vh);
-  max-width: 980px;
-  opacity: 0.82;
+  gap: 12px;
+  grid-template-columns: 1.18fr 0.82fr;
+  grid-template-rows: 1fr 0.72fr;
+  height: min(390px, 50vh);
+  max-width: 760px;
+  opacity: 0.72;
   pointer-events: none;
   position: absolute;
-  right: clamp(-18px, 4vw, 72px);
-  width: min(56vw, 860px);
+  right: clamp(-86px, -2vw, 20px);
+  width: min(49vw, 760px);
   z-index: 2;
 }
 
@@ -335,25 +335,23 @@ a {
     radial-gradient(circle at 54% 48%, rgba(112, 184, 255, 0.2), transparent 35rem),
     radial-gradient(circle at 74% 18%, rgba(127, 255, 206, 0.08), transparent 22rem);
   content: "";
-  filter: blur(8px);
+  filter: blur(2px);
   inset: -90px -70px;
   position: absolute;
   z-index: -1;
 }
 
 .hero-camera-panel {
-  animation: feedFloat 10s ease-in-out infinite;
   background:
     repeating-linear-gradient(180deg, rgba(127, 231, 255, 0.025) 0 1px, transparent 1px 5px),
-    rgba(4, 7, 11, 0.78);
+    rgba(4, 7, 11, 0.92);
   border: 1px solid rgba(190, 216, 238, 0.24);
   border-radius: var(--radius);
   box-shadow:
-    0 22px 70px rgba(0, 0, 0, 0.46),
+    0 18px 54px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
   position: relative;
-  backdrop-filter: blur(18px);
 }
 
 .hero-camera-panel::before {
@@ -380,16 +378,10 @@ a {
   animation-delay: -7s;
 }
 
-.hero-camera-panel:hover::before,
-.hero-camera-wall .hero-camera-panel::before {
-  animation: glassSweep 8s linear infinite;
-}
-
 .hero-camera-panel img {
-  filter: saturate(0.72) contrast(1.18) brightness(0.64);
+  filter: saturate(0.82) contrast(1.16) brightness(0.72);
   height: 100%;
   object-fit: cover;
-  transform: scale(1.05);
   width: 100%;
 }
 
@@ -429,33 +421,28 @@ a {
 }
 
 .hero-camera-large {
-  grid-column: 1 / span 2;
+  grid-column: 1;
   grid-row: 1 / span 2;
 }
 
 .hero-camera-tall {
-  animation-delay: -2s;
-  grid-column: 3;
-  grid-row: 1 / span 2;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .hero-camera-small {
-  animation-delay: -4s;
-  align-self: end;
   grid-column: 2;
   grid-row: 2;
-  max-height: 190px;
-  transform: translateX(-28%);
-  z-index: 3;
 }
 
 .hero-camera-wide {
-  animation-delay: -6s;
-  grid-column: 1 / span 2;
+  bottom: -44px;
+  grid-column: 1 / -1;
   grid-row: 2;
-  justify-self: end;
-  max-height: 210px;
-  width: 72%;
+  justify-self: center;
+  max-height: 128px;
+  position: relative;
+  width: 58%;
   z-index: 2;
 }
 

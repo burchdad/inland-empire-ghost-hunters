@@ -700,6 +700,184 @@ h3 {
   top: 47px;
 }
 
+.mission-control-section {
+  background:
+    radial-gradient(circle at 62% 40%, rgba(112, 184, 255, 0.14), transparent 30rem),
+    radial-gradient(circle at 18% 78%, rgba(127, 255, 206, 0.055), transparent 24rem),
+    linear-gradient(180deg, #03070c 0%, #081019 48%, #03070c 100%);
+  border-bottom: 1px solid rgba(190, 216, 238, 0.12);
+  border-top: 1px solid rgba(190, 216, 238, 0.12);
+  overflow: hidden;
+}
+
+.mission-control-section::before {
+  animation: slowPulse 7s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(127, 231, 255, 0.14), transparent 20rem),
+    repeating-linear-gradient(90deg, rgba(190, 216, 238, 0.034) 0 1px, transparent 1px 48px);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.mission-control-layout {
+  align-items: center;
+  display: grid;
+  gap: 68px;
+  grid-template-columns: minmax(0, 0.78fr) minmax(560px, 1.2fr);
+}
+
+.mission-copy p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 680px;
+}
+
+.mission-metrics {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 34px;
+}
+
+.mission-metrics span {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.022));
+  border: 1px solid rgba(190, 216, 238, 0.18);
+  border-radius: var(--radius);
+  color: var(--steel);
+  display: grid;
+  font-size: 0.82rem;
+  font-weight: 850;
+  min-height: 82px;
+  padding: 16px;
+}
+
+.mission-metrics strong {
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.mission-dashboard {
+  background:
+    repeating-linear-gradient(180deg, rgba(127, 231, 255, 0.026) 0 1px, transparent 1px 22px),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.078), rgba(255, 255, 255, 0.024)),
+    rgba(7, 15, 24, 0.86);
+  border: 1px solid rgba(190, 216, 238, 0.24);
+  border-radius: var(--radius);
+  box-shadow:
+    0 0 120px rgba(30, 80, 150, 0.24),
+    0 34px 110px rgba(0, 0, 0, 0.46),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(18px);
+}
+
+.mission-dashboard::before {
+  animation: signalSweep 11s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(127, 231, 255, 0.13), transparent);
+  content: "";
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 46%;
+  z-index: 2;
+}
+
+.mission-topline {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr auto auto;
+  padding: 18px 20px;
+}
+
+.mission-topline span,
+.mission-topline em,
+.mission-status span,
+.mission-feed span {
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mission-topline strong {
+  color: var(--signal);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.mission-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1.25fr 0.75fr 0.75fr;
+  padding: 18px;
+}
+
+.mission-feed {
+  background:
+    repeating-radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 5px),
+    #07101a;
+  border: 1px solid rgba(190, 216, 238, 0.18);
+  border-radius: 6px;
+  min-height: 360px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mission-feed iframe {
+  border: 0;
+  display: block;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.mission-feed span {
+  background: rgba(3, 7, 12, 0.66);
+  border: 1px solid rgba(190, 216, 238, 0.14);
+  border-radius: 4px;
+  left: 14px;
+  padding: 7px 8px;
+  position: absolute;
+  top: 14px;
+  z-index: 1;
+}
+
+.large-feed {
+  grid-row: span 2;
+}
+
+.mission-status {
+  align-content: end;
+  background:
+    radial-gradient(circle at 28% 20%, rgba(112, 184, 255, 0.12), transparent 9rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.062), rgba(255, 255, 255, 0.022));
+  border: 1px solid rgba(190, 216, 238, 0.17);
+  border-radius: 6px;
+  display: grid;
+  min-height: 174px;
+  padding: 18px;
+}
+
+.mission-status strong {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.12;
+  margin-top: 12px;
+}
+
 .console-top {
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -1782,6 +1960,7 @@ input[type="checkbox"] {
   .service-layout,
   .privacy-panel,
   .closing-layout,
+  .mission-control-layout,
   .media-feature,
   .standards-layout,
   .request-teaser-inner,
@@ -1809,8 +1988,18 @@ input[type="checkbox"] {
 
   .intro-marks,
   .home-video-grid,
+  .mission-metrics,
   .standards-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mission-feed {
+    grid-column: 1 / -1;
+    min-height: 320px;
   }
 
   .process-list article,
@@ -1884,8 +2073,18 @@ input[type="checkbox"] {
   .approach-card-grid,
   .benefit-grid,
   .quick-facts,
+  .mission-grid,
+  .mission-metrics,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mission-feed {
+    min-height: 240px;
+  }
+
+  .mission-status {
+    min-height: 132px;
   }
 
   .channel-card {

@@ -56,10 +56,10 @@
         <div class="section-inner request-layout request-page-layout">
           <aside class="request-copy">
             <div class="notice">
-              <strong>Evidence email</strong>
+              <strong>Private evidence upload</strong>
               <p>
-                Uploads are not active yet. Email evidence to
-                <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>.
+                Files are uploaded to private case storage. After submitting, send the prepared email so the team knows
+                the case is ready to review.
               </p>
             </div>
             <div class="notice">
@@ -81,7 +81,11 @@
             </div>
           </aside>
 
-          <form class="request-form" id="investigation-form" action="mailto:contact@inlandempireghosthunters.com" method="post" enctype="text/plain">
+          <form class="request-form" id="investigation-form">
+            <label class="upload-honeypot" aria-hidden="true">
+              Website
+              <input name="website" tabindex="-1" autocomplete="off" />
+            </label>
             <fieldset>
               <legend>Contact Information</legend>
               <div class="form-grid">
@@ -168,10 +172,10 @@
             </fieldset>
 
             <fieldset>
-              <legend>Permission to Contact</legend>
+              <legend>Evidence Upload</legend>
               <p class="form-note">
-                Select any evidence types you have, then email files separately to
-                <a href="mailto:evidence@inlandempireghosthunters.com">evidence@inlandempireghosthunters.com</a>.
+                Select any evidence types you have, then attach files for private upload. Please include the clearest
+                original files available.
               </p>
               <div class="check-grid" aria-label="Evidence types">
                 <label><input type="checkbox" name="evidence" value="photos" /> Photos</label>
@@ -180,13 +184,30 @@
                 <label><input type="checkbox" name="evidence" value="security_clips" /> Security camera clips</label>
                 <label><input type="checkbox" name="evidence" value="timeline" /> Written timeline of events</label>
               </div>
+              <label class="file-upload">
+                Evidence files
+                <input
+                  id="evidence-files"
+                  name="evidence_files"
+                  type="file"
+                  multiple
+                  accept="image/*,video/*,audio/*,.pdf,.txt,.md,.doc,.docx"
+                />
+                <span>Up to 6 files, 100 MB each. Photos, videos, audio, PDFs, text files, and timelines are accepted.</span>
+              </label>
+              <ul class="upload-list" id="upload-list" aria-live="polite"></ul>
+            </fieldset>
+
+            <fieldset>
+              <legend>Permission to Contact</legend>
               <label class="permission">
                 <input type="checkbox" name="contact_permission" required />
                 I give permission to be contacted about this request.
               </label>
             </fieldset>
 
-            <button class="button primary full" type="submit">Prepare Email Request</button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+            <button class="button primary full" type="submit">Submit Private Case Intake</button>
           </form>
         </div>
       </section>

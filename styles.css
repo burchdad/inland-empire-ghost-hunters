@@ -1362,6 +1362,12 @@ h3 {
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
+.timeline-photo-card {
+  grid-column: span 2;
+  min-height: 260px;
+  overflow: hidden;
+}
+
 .timeline-list article::after {
   background: radial-gradient(circle, rgba(112, 184, 255, 0.18), transparent 58%);
   content: "";
@@ -1373,6 +1379,27 @@ h3 {
   transform: translateX(-50%);
   width: 90px;
   z-index: -1;
+}
+
+.timeline-photo-card img {
+  filter: saturate(0.82) contrast(1.05) brightness(0.72);
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.timeline-photo-card::before {
+  background:
+    linear-gradient(180deg, rgba(4, 7, 11, 0.08), rgba(4, 7, 11, 0.9)),
+    linear-gradient(90deg, rgba(4, 7, 11, 0.88), rgba(4, 7, 11, 0.12));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
 }
 
 .timeline-list article:hover {
@@ -1405,6 +1432,18 @@ h3 {
 .timeline-list strong {
   display: block;
   line-height: 1.22;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-photo-card span {
+  margin-bottom: 96px;
+}
+
+.timeline-photo-card span,
+.timeline-photo-card strong {
+  position: relative;
+  z-index: 2;
 }
 
 .youtube-preview {

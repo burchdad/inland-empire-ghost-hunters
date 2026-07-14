@@ -1514,7 +1514,7 @@ h3 {
 }
 
 .timeline-photo-card {
-  grid-column: span 2;
+  grid-column: span 3;
   min-height: 260px;
   overflow: hidden;
 }

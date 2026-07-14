@@ -1233,6 +1233,46 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.team-image-role {
+  align-content: end;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.team-image-role img {
+  filter: saturate(0.82) contrast(1.06) brightness(0.55);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  transform: scale(1.001);
+  transition: filter 180ms ease, transform 180ms ease;
+  width: 100%;
+  z-index: -2;
+}
+
+.team-image-role::before {
+  background:
+    linear-gradient(180deg, rgba(4, 7, 11, 0.08), rgba(4, 7, 11, 0.9)),
+    linear-gradient(90deg, rgba(4, 7, 11, 0.74), rgba(4, 7, 11, 0.12));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.team-image-role:hover img {
+  filter: saturate(0.92) contrast(1.08) brightness(0.66);
+  transform: scale(1.025);
+}
+
+.team-image-role h3,
+.team-image-role p {
+  position: relative;
+  z-index: 1;
+}
+
 .team-video-card {
   grid-column: 1 / -1;
   min-height: 440px;

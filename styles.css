@@ -1291,12 +1291,37 @@ h3 {
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
+.approach-photo-card {
+  min-height: 260px;
+}
+
 .approach-card-grid article::after {
   background: radial-gradient(circle at 84% 18%, rgba(127, 231, 255, 0.11), transparent 8rem);
   content: "";
   inset: 0;
   pointer-events: none;
   position: absolute;
+}
+
+.approach-photo-card img {
+  filter: saturate(0.82) contrast(1.06) brightness(0.66);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.approach-photo-card::before {
+  background:
+    linear-gradient(180deg, rgba(4, 7, 11, 0.1), rgba(4, 7, 11, 0.92)),
+    linear-gradient(90deg, rgba(4, 7, 11, 0.82), rgba(4, 7, 11, 0.12));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
 }
 
 .approach-card-grid article:hover {
@@ -1314,6 +1339,17 @@ h3 {
   font-size: 0.78rem;
   font-weight: 900;
   margin-bottom: 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.approach-card-grid h3 {
+  position: relative;
+  z-index: 2;
+}
+
+.approach-photo-card span {
+  margin-bottom: 118px;
 }
 
 .timeline-section {

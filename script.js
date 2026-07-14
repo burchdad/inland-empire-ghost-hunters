@@ -4,6 +4,7 @@ const form = document.querySelector("#investigation-form");
 const evidenceFilesInput = document.querySelector("#evidence-files");
 const uploadList = document.querySelector("#upload-list");
 const formStatus = document.querySelector("#form-status");
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnjendbz";
 
 const MAX_EVIDENCE_FILES = 6;
 const MAX_EVIDENCE_FILE_SIZE = 100 * 1024 * 1024;
@@ -163,6 +164,67 @@ async function uploadCasePacket(upload, packet, caseId, uploadCount) {
   });
 }
 
+function buildNotificationLines(data, caseId, evidence, uploadedFiles, casePacketUrl) {
+  return [
+    `Case ID: ${caseId}`,
+    `Private case packet: ${casePacketUrl}`,
+    "",
+    "Basic Info",
+    `Name: ${data.get("name") || ""}`,
+    `Phone: ${data.get("phone") || ""}`,
+    `Email: ${data.get("email") || ""}`,
+    `City/location: ${data.get("city") || ""}`,
+    `Type of location: ${data.get("location_type") || ""}`,
+    "",
+    "What Happened?",
+    `Description: ${data.get("activity_description") || ""}`,
+    `Started: ${data.get("started") || ""}`,
+    `Frequency: ${data.get("frequency") || ""}`,
+    `Areas: ${data.get("areas") || ""}`,
+    `Physical effects: ${data.get("physical_effects") || ""}`,
+    `Children/elderly/pets affected: ${data.get("vulnerable_affected") || ""}`,
+    "",
+    "Evidence",
+    `Evidence types: ${evidence}`,
+    `Uploaded files: ${uploadedFiles.length}`,
+    ...uploadedFiles.map((file, index) => `${index + 1}. ${file.fileName} - ${file.url}`),
+    "",
+    `Best time to contact: ${data.get("best_time") || ""}`,
+    `Permission to contact: ${data.get("contact_permission") ? "Yes" : "No"}`,
+  ];
+}
+
+async function notifyTeam(data, caseId, evidence, uploadedFiles, casePacketUrl) {
+  const notification = new FormData();
+  const message = buildNotificationLines(data, caseId, evidence, uploadedFiles, casePacketUrl).join("\n");
+
+  notification.append("_subject", `Investigation Request - ${caseId}`);
+  notification.append("case_id", caseId);
+  notification.append("case_packet_url", casePacketUrl);
+  notification.append("name", data.get("name") || "");
+  notification.append("email", data.get("email") || "");
+  notification.append("phone", data.get("phone") || "");
+  notification.append("city", data.get("city") || "");
+  notification.append("location_type", data.get("location_type") || "");
+  notification.append("best_time", data.get("best_time") || "");
+  notification.append("evidence_types", evidence);
+  notification.append("uploaded_file_count", String(uploadedFiles.length));
+  notification.append("uploaded_files", uploadedFiles.map((file) => `${file.fileName}: ${file.url}`).join("\n"));
+  notification.append("message", message);
+
+  const response = await fetch(form?.action || FORMSPREE_ENDPOINT, {
+    method: "POST",
+    body: notification,
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("The case was uploaded, but the notification could not be sent. Please email contact@inlandempireghosthunters.com.");
+  }
+}
+
 evidenceFilesInput?.addEventListener("change", updateUploadList);
 
 form?.addEventListener("submit", (event) => {
@@ -229,39 +291,11 @@ async function submitInvestigationRequest() {
   setFormStatus("Saving private case packet...", "info");
   const casePacketBlob = await uploadCasePacket(upload, packet, caseId, files.length + 1);
 
-  const subject = encodeURIComponent("Investigation Request - Inland Empire Ghost Hunters");
-  const body = encodeURIComponent(
-    [
-      `Case ID: ${caseId}`,
-      `Private case packet: ${casePacketBlob.url}`,
-      "",
-      "Basic Info",
-      `Name: ${data.get("name") || ""}`,
-      `Phone: ${data.get("phone") || ""}`,
-      `Email: ${data.get("email") || ""}`,
-      `City/location: ${data.get("city") || ""}`,
-      `Type of location: ${data.get("location_type") || ""}`,
-      "",
-      "What Happened?",
-      `Description: ${data.get("activity_description") || ""}`,
-      `Started: ${data.get("started") || ""}`,
-      `Frequency: ${data.get("frequency") || ""}`,
-      `Areas: ${data.get("areas") || ""}`,
-      `Physical effects: ${data.get("physical_effects") || ""}`,
-      `Children/elderly/pets affected: ${data.get("vulnerable_affected") || ""}`,
-      "",
-      "Evidence",
-      `Evidence types: ${evidence}`,
-      `Uploaded files: ${uploadedFiles.length}`,
-      ...uploadedFiles.map((file, index) => `${index + 1}. ${file.fileName} - ${file.url}`),
-      "",
-      `Best time to contact: ${data.get("best_time") || ""}`,
-      `Permission to contact: ${data.get("contact_permission") ? "Yes" : "No"}`,
-    ].join("\n")
-  );
-
-  setFormStatus(`Case ${caseId} uploaded. Your email app is opening so the team can be notified.`, "success");
-  window.location.href = `mailto:contact@inlandempireghosthunters.com?subject=${subject}&body=${body}`;
+  setFormStatus("Sending private case notification...", "info");
+  await notifyTeam(data, caseId, evidence, uploadedFiles, casePacketBlob.url);
+  form.reset();
+  updateUploadList();
+  setFormStatus(`Case ${caseId} submitted. The team has been notified and will review the details privately.`, "success");
 
   if (submitButton) {
     submitButton.disabled = false;

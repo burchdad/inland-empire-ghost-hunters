@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin Dashboard | Inland Empire Ghost Hunters</title>
+    <link rel="icon" href="assets/favicon.ico" sizes="32x32" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="brand admin-sidebar-brand" href="index.html">
+          <span class="brand-mark">
+            <img src="assets/inland-empire-ghost-hunters-icon.png" alt="" />
+          </span>
+          <strong>Inland Empire <small>Ghost Hunters</small></strong>
+        </a>
+        <nav class="admin-tabs" aria-label="Admin dashboard">
+          <button class="active" type="button" data-admin-tab="overview">Overview</button>
+          <button type="button" data-admin-tab="inbox">Inbox</button>
+          <button type="button" data-admin-tab="home">Home Page</button>
+          <button type="button" data-admin-tab="approach">Our Approach</button>
+          <button type="button" data-admin-tab="evidence">Evidence / YouTube</button>
+          <button type="button" data-admin-tab="request">Request Investigation</button>
+          <button type="button" data-admin-tab="join">Join the Team</button>
+          <button type="button" data-admin-tab="media">Media Library</button>
+          <button type="button" data-admin-tab="helper">Website Helper</button>
+          <button type="button" data-admin-tab="settings">Settings</button>
+        </nav>
+        <button class="button secondary full" id="admin-logout" type="button">Log Out</button>
+      </aside>
+
+      <section class="admin-main">
+        <div class="admin-topbar">
+          <div>
+            <p class="eyebrow">Inland Empire Ghost Hunters</p>
+            <h1>Website Admin Dashboard</h1>
+          </div>
+          <span id="admin-session-label">Checking session...</span>
+        </div>
+
+        <section class="admin-panel active" data-admin-panel="overview">
+          <h2>Mission Control</h2>
+          <p>Manage website content, inbox backups, media, and support from one private backend.</p>
+          <div class="admin-stat-grid">
+            <article><strong id="inbox-count">0</strong><span>Inbox records</span></article>
+            <article><strong id="media-count">0</strong><span>Media files</span></article>
+            <article><strong id="content-updated">Not saved</strong><span>Last content update</span></article>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="inbox">
+          <div class="admin-panel-header">
+            <div>
+              <h2>Inbox Backup</h2>
+              <p>Evidence requests and support-work interest forms are saved here even if email delivery fails.</p>
+            </div>
+            <button class="button secondary" id="refresh-inbox" type="button">Refresh Inbox</button>
+          </div>
+          <div class="admin-list" id="admin-inbox-list"></div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="home">
+          <h2>Home Page</h2>
+          <p>Use content overrides to update text, images, links, embeds, and visual assets by CSS selector.</p>
+          <div class="admin-note">
+            Example: selector <code>#hero-title span:first-child</code>, property <code>text</code>, value <code>Local Investigations...</code>
+          </div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="approach">
+          <h2>Our Approach</h2>
+          <p>Use the content editor below or the Website Helper to prepare selector-based changes for this page.</p>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="evidence">
+          <h2>Evidence / YouTube</h2>
+          <p>Update YouTube links by setting iframe <code>src</code> values or watch button <code>href</code> values through content overrides.</p>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="request">
+          <h2>Request Investigation</h2>
+          <p>Review evidence request backups in the Inbox. Form delivery currently routes through Formspree and Vercel Blob.</p>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="join">
+          <h2>Join the Team</h2>
+          <p>Support-work submissions are saved to the Inbox and sent through the support Formspree endpoint.</p>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="media">
+          <div class="admin-panel-header">
+            <div>
+              <h2>Media Library</h2>
+              <p>Upload website images or short media files. Copy the URL into a content override when needed.</p>
+            </div>
+          </div>
+          <form class="admin-upload-form" id="admin-media-form">
+            <label>
+              Upload media
+              <input name="media" type="file" accept="image/*,video/mp4,video/webm,video/quicktime" required />
+            </label>
+            <button class="button primary" type="submit">Upload Media</button>
+          </form>
+          <div class="form-status" id="admin-media-status" role="status" aria-live="polite"></div>
+          <div class="admin-list media-list" id="admin-media-list"></div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="helper">
+          <h2>Website Helper</h2>
+          <p>This connects Inland Empire Ghost Hunters to the Ghost Mission Control website helper agent for technical support and site modifications.</p>
+          <div class="helper-box" id="helper-log"></div>
+          <form class="helper-form" id="helper-form">
+            <label>
+              Ask the website helper
+              <textarea name="prompt" rows="5" placeholder="Ask for a text change, video update, troubleshooting help, or selector override..." required></textarea>
+            </label>
+            <button class="button primary" type="submit">Send to Website Helper</button>
+          </form>
+          <div class="form-status" id="helper-status" role="status" aria-live="polite"></div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="settings">
+          <h2>Content Overrides</h2>
+          <p>Edit saved site override JSON. Each override supports <code>selector</code>, <code>property</code>, and <code>value</code>.</p>
+          <textarea class="admin-json-editor" id="content-editor" spellcheck="false"></textarea>
+          <div class="admin-actions">
+            <button class="button secondary" id="load-content" type="button">Reload Content</button>
+            <button class="button primary" id="save-content" type="button">Save Content Overrides</button>
+          </div>
+          <div class="form-status" id="content-status" role="status" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

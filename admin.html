@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin Login | Inland Empire Ghost Hunters</title>
+    <link rel="icon" href="assets/favicon.ico" sizes="32x32" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-login-shell">
+      <section class="admin-login-card" aria-labelledby="admin-login-title">
+        <a class="brand admin-login-brand" href="index.html" aria-label="Inland Empire Ghost Hunters home">
+          <span class="brand-mark">
+            <img src="assets/inland-empire-ghost-hunters-icon.png" alt="" />
+          </span>
+          <strong>Inland Empire <small>Ghost Hunters</small></strong>
+        </a>
+        <p class="eyebrow">Admin Login</p>
+        <h1 id="admin-login-title">Private website backend.</h1>
+        <p>Access is limited to authorized Inland Empire Ghost Hunters website administrators.</p>
+        <form class="admin-login-form" id="admin-login-form">
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="username" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <div class="form-status" id="admin-login-status" role="status" aria-live="polite"></div>
+          <button class="button primary full" type="submit">Enter Admin Dashboard</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

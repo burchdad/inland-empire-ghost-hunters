@@ -4,7 +4,7 @@ const form = document.querySelector("#investigation-form");
 const evidenceFilesInput = document.querySelector("#evidence-files");
 const uploadList = document.querySelector("#upload-list");
 const formStatus = document.querySelector("#form-status");
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnjendbz";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeeyeank";
 
 const MAX_EVIDENCE_FILES = 6;
 const MAX_EVIDENCE_FILE_SIZE = 100 * 1024 * 1024;

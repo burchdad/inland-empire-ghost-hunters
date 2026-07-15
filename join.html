@@ -105,7 +105,22 @@
           <div class="request-teaser-card">
             <strong>Interested?</strong>
             <p>Send a short note about your background, availability, and why you want to help.</p>
-            <a class="button primary full" href="request.html">Start a Conversation</a>
+            <form class="support-form" action="https://formspree.io/f/xqerepna" method="POST">
+              <input type="hidden" name="_subject" value="Join the Team / Support Work Interest" />
+              <label>
+                Name
+                <input name="name" autocomplete="name" required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autocomplete="email" required />
+              </label>
+              <label>
+                Background or area of interest
+                <textarea name="message" rows="4" required></textarea>
+              </label>
+              <button class="button primary full" type="submit">Send Interest Form</button>
+            </form>
           </div>
         </div>
       </section>

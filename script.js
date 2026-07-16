@@ -4,6 +4,8 @@ const form = document.querySelector("#investigation-form");
 const evidenceFilesInput = document.querySelector("#evidence-files");
 const uploadList = document.querySelector("#upload-list");
 const formStatus = document.querySelector("#form-status");
+const supportForm = document.querySelector(".support-form");
+const supportStatus = document.querySelector("#support-form-status");
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeeyeank";
 
 const MAX_EVIDENCE_FILES = 6;
@@ -195,33 +197,94 @@ function buildNotificationLines(data, caseId, evidence, uploadedFiles, casePacke
 }
 
 async function notifyTeam(data, caseId, evidence, uploadedFiles, casePacketUrl) {
-  const notification = new FormData();
   const message = buildNotificationLines(data, caseId, evidence, uploadedFiles, casePacketUrl).join("\n");
-
-  notification.append("_subject", `Investigation Request - ${caseId}`);
-  notification.append("case_id", caseId);
-  notification.append("case_packet_url", casePacketUrl);
-  notification.append("name", data.get("name") || "");
-  notification.append("email", data.get("email") || "");
-  notification.append("phone", data.get("phone") || "");
-  notification.append("city", data.get("city") || "");
-  notification.append("location_type", data.get("location_type") || "");
-  notification.append("best_time", data.get("best_time") || "");
-  notification.append("evidence_types", evidence);
-  notification.append("uploaded_file_count", String(uploadedFiles.length));
-  notification.append("uploaded_files", uploadedFiles.map((file) => `${file.fileName}: ${file.url}`).join("\n"));
-  notification.append("message", message);
-
-  const response = await fetch(form?.action || FORMSPREE_ENDPOINT, {
+  const response = await fetch("/api/evidence-notify", {
     method: "POST",
-    body: notification,
     headers: {
       Accept: "application/json",
+      "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      subject: `Investigation Request - ${caseId}`,
+      caseId,
+      casePacketUrl,
+      name: data.get("name") || "",
+      email: data.get("email") || "",
+      phone: data.get("phone") || "",
+      city: data.get("city") || "",
+      locationType: data.get("location_type") || "",
+      bestTime: data.get("best_time") || "",
+      evidence,
+      uploadedFileCount: uploadedFiles.length,
+      uploadedFiles: uploadedFiles.map((file) => `${file.fileName}: ${file.url}`).join("\n"),
+      message,
+      formspreeEndpoint: form?.action || FORMSPREE_ENDPOINT,
+    }),
   });
 
   if (!response.ok) {
-    throw new Error("The case was uploaded, but the notification could not be sent. Please email contact@inlandempireghosthunters.com.");
+    throw new Error("The case was uploaded and saved to the admin inbox, but the email notification could not be sent.");
+  }
+}
+
+function setSupportStatus(message, type = "info") {
+  if (!supportStatus) return;
+  supportStatus.textContent = message;
+  supportStatus.dataset.status = type;
+}
+
+supportForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!supportForm.reportValidity()) {
+    return;
+  }
+
+  submitSupportInterest().catch((error) => {
+    console.error(error);
+    setSupportStatus(error.message || "Something went wrong while sending your interest form.", "error");
+    const submitButton = supportForm.querySelector("button[type='submit']");
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Send Interest Form";
+    }
+  });
+});
+
+async function submitSupportInterest() {
+  const data = new FormData(supportForm);
+  const submitButton = supportForm.querySelector("button[type='submit']");
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+  }
+
+  setSupportStatus("Sending interest form...", "info");
+
+  const response = await fetch("/api/support-intake", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: data.get("name") || "",
+      email: data.get("email") || "",
+      message: data.get("message") || "",
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Your message was saved to the admin inbox, but the email notification could not be sent.");
+  }
+
+  supportForm.reset();
+  setSupportStatus("Your interest form has been sent.", "success");
+
+  if (submitButton) {
+    submitButton.disabled = false;
+    submitButton.textContent = "Send Interest Form";
   }
 }
 

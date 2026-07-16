@@ -28,14 +28,15 @@ export default async function handler(request) {
       return json({ error: 'Method not allowed' }, 405);
     }
 
-    const helperUrl = requiredEnv('HELPER_AGENT_URL');
-    const helperKey = requiredEnv('HELPER_AGENT_API_KEY');
+    const helperUrl = requiredEnv('GHOST_MISSION_CONTROL_WEBHOOK_URL');
+    const helperKey = requiredEnv('GHOST_MISSION_CONTROL_WEBHOOK_SECRET');
     const body = await request.json();
     const siteContent = await readSiteContent();
     const response = await fetch(helperUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${helperKey}`,
+        'X-Ghost-Mission-Control-Secret': helperKey,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

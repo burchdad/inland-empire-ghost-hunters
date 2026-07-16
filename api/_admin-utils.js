@@ -41,7 +41,7 @@ function safeCompare(left, right) {
 
 function signPayload(payload) {
   return crypto
-    .createHmac('sha256', requiredEnv('ADMIN_SESSION_SECRET'))
+    .createHmac('sha256', requiredEnv('GHOST_MISSION_CONTROL_WEBHOOK_SECRET'))
     .update(payload)
     .digest('base64url');
 }

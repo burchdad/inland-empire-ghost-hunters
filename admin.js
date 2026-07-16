@@ -69,15 +69,32 @@ async function adminFetch(url, options = {}) {
   return response;
 }
 
+async function readJsonResponse(response) {
+  try {
+    return await response.json();
+  } catch {
+    return {};
+  }
+}
+
 loginForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   setStatus(loginStatus, "Checking credentials...", "info");
 
   const data = new FormData(loginForm);
+  const submitButton = loginForm.querySelector("button[type='submit']");
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 15000);
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Checking...";
+  }
 
   try {
     const response = await fetch("/api/admin-auth", {
       method: "POST",
+      signal: controller.signal,
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -87,7 +104,7 @@ loginForm?.addEventListener("submit", async (event) => {
         password: data.get("password"),
       }),
     });
-    const result = await response.json();
+    const result = await readJsonResponse(response);
 
     if (!response.ok) {
       throw new Error(result.error || "Unable to log in.");
@@ -96,7 +113,16 @@ loginForm?.addEventListener("submit", async (event) => {
     setToken(result.token);
     window.location.href = "admin-dashboard.html";
   } catch (error) {
-    setStatus(loginStatus, error.message || "Unable to log in.", "error");
+    const message = error.name === "AbortError"
+      ? "Login request timed out. Check Vercel env vars and deployment logs."
+      : error.message || "Unable to log in.";
+    setStatus(loginStatus, message, "error");
+  } finally {
+    window.clearTimeout(timeout);
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Enter Admin Dashboard";
+    }
   }
 });
 

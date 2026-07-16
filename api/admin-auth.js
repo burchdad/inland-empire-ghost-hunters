@@ -5,7 +5,7 @@ import {
   requireAdmin,
   serverError,
   unauthorized,
-} from './_admin-utils.js';
+} from './_auth-utils.js';
 
 export default async function handler(request) {
   try {

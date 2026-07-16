@@ -22,6 +22,14 @@ const mediaList = document.querySelector("#admin-media-list");
 const helperForm = document.querySelector("#helper-form");
 const helperStatus = document.querySelector("#helper-status");
 const helperLog = document.querySelector("#helper-log");
+const pageEditors = document.querySelectorAll("[data-page-editor]");
+const pageSaveButtons = document.querySelectorAll("[data-save-page]");
+
+let currentContent = {
+  updatedAt: null,
+  updatedBy: "system",
+  overrides: [],
+};
 
 function setStatus(element, message, type = "info") {
   if (!element) return;
@@ -200,14 +208,127 @@ async function loadInbox() {
 
 refreshInboxButton?.addEventListener("click", loadInbox);
 
+function getContentFields(pageName) {
+  return Array.from(document.querySelectorAll(`[data-page-editor="${pageName}"] [data-content-field]`));
+}
+
+function getOverrideKey(override) {
+  return `${override.selector}::${override.property}`;
+}
+
+function normalizeOverrides(overrides = []) {
+  const map = new Map();
+
+  for (const override of overrides) {
+    if (!override?.selector || !override?.property) continue;
+    map.set(getOverrideKey(override), override);
+  }
+
+  return map;
+}
+
+function getFieldDefault(field) {
+  if (field.dataset.default !== undefined) {
+    return field.dataset.default;
+  }
+
+  field.dataset.default = field.value || "";
+  return field.dataset.default;
+}
+
+function populatePageEditors(content) {
+  const overrideMap = normalizeOverrides(content.overrides);
+
+  for (const field of document.querySelectorAll("[data-content-field]")) {
+    const key = `${field.dataset.selector}::${field.dataset.property}`;
+    field.value = overrideMap.has(key) ? overrideMap.get(key).value : getFieldDefault(field);
+  }
+}
+
+function setPageStatus(pageName, message, type = "info") {
+  setStatus(document.querySelector(`[data-page-status="${pageName}"]`), message, type);
+}
+
+function buildContentFromPage(pageName) {
+  const fields = getContentFields(pageName);
+  const fieldKeys = new Set(fields.map((field) => `${field.dataset.selector}::${field.dataset.property}`));
+  const preserved = (currentContent.overrides || []).filter((override) => !fieldKeys.has(getOverrideKey(override)));
+  const updates = fields
+    .filter((field) => field.dataset.selector && field.dataset.property)
+    .map((field) => ({
+      selector: field.dataset.selector,
+      property: field.dataset.property,
+      value: field.value,
+    }));
+
+  return {
+    ...currentContent,
+    overrides: [...preserved, ...updates],
+  };
+}
+
+async function savePageEditor(pageName) {
+  const button = document.querySelector(`[data-save-page="${pageName}"]`);
+
+  try {
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Saving...";
+    }
+
+    setPageStatus(pageName, "Saving page content...", "info");
+    const nextContent = buildContentFromPage(pageName);
+    const response = await adminFetch("/api/admin-content", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(nextContent),
+    });
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Unable to save page content.");
+    }
+
+    currentContent = result;
+    if (contentEditor) {
+      contentEditor.value = JSON.stringify(result, null, 2);
+    }
+    if (contentUpdated) {
+      contentUpdated.textContent = result.updatedAt ? new Date(result.updatedAt).toLocaleString() : "Just now";
+    }
+    populatePageEditors(result);
+    setPageStatus(pageName, "Page content saved.", "success");
+  } catch (error) {
+    setPageStatus(pageName, error.message || "Unable to save page content.", "error");
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = button.dataset.originalText || "Save Page";
+    }
+  }
+}
+
+pageSaveButtons.forEach((button) => {
+  button.dataset.originalText = button.textContent;
+  button.addEventListener("click", () => savePageEditor(button.dataset.savePage));
+});
+
+pageEditors.forEach((form) => {
+  form.addEventListener("submit", (event) => event.preventDefault());
+});
+
 async function loadContent() {
   if (!contentEditor) return;
 
   setStatus(contentStatus, "Loading content...", "info");
   const response = await adminFetch("/api/admin-content");
   const content = await response.json();
+  currentContent = content;
 
   contentEditor.value = JSON.stringify(content, null, 2);
+  populatePageEditors(content);
 
   if (contentUpdated) {
     contentUpdated.textContent = content.updatedAt ? new Date(content.updatedAt).toLocaleString() : "Not saved";
@@ -236,7 +357,9 @@ async function saveContent() {
       throw new Error(result.error || "Unable to save content.");
     }
 
+    currentContent = result;
     contentEditor.value = JSON.stringify(result, null, 2);
+    populatePageEditors(result);
     if (contentUpdated) {
       contentUpdated.textContent = result.updatedAt ? new Date(result.updatedAt).toLocaleString() : "Just now";
     }

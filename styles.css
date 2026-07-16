@@ -2590,12 +2590,78 @@ input[type="checkbox"] {
 .admin-record,
 .admin-media-item,
 .admin-note,
+.admin-content-form,
 .helper-box {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.26);
   padding: 22px;
+}
+
+.admin-content-form {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-content-form h3 {
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  font-size: 1rem;
+  letter-spacing: 0;
+  margin: 6px 0 0;
+  padding-top: 20px;
+}
+
+.admin-content-form h3:first-child {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.admin-content-form label,
+.admin-upload-form label,
+.helper-form label {
+  color: var(--muted);
+  display: grid;
+  font-weight: 800;
+  gap: 8px;
+}
+
+.admin-field-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-content-form input,
+.admin-content-form textarea,
+.admin-upload-form input,
+.helper-form textarea {
+  background: rgba(2, 5, 9, 0.7);
+  border: 1px solid rgba(190, 216, 238, 0.18);
+  border-radius: var(--radius);
+  color: var(--text);
+  font: inherit;
+  padding: 12px 13px;
+  width: 100%;
+}
+
+.admin-content-form textarea,
+.helper-form textarea,
+.admin-json-editor {
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.admin-content-form input:focus,
+.admin-content-form textarea:focus,
+.admin-upload-form input:focus,
+.helper-form textarea:focus,
+.admin-json-editor:focus {
+  border-color: rgba(112, 184, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(112, 184, 255, 0.12);
+  outline: none;
 }
 
 .admin-stat-grid strong {
@@ -2932,6 +2998,10 @@ input[type="checkbox"] {
   }
 
   .admin-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-field-grid {
     grid-template-columns: 1fr;
   }
 

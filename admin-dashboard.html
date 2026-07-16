@@ -63,31 +63,189 @@
         </section>
 
         <section class="admin-panel" data-admin-panel="home">
-          <h2>Home Page</h2>
-          <p>Use content overrides to update text, images, links, embeds, and visual assets by CSS selector.</p>
-          <div class="admin-note">
-            Example: selector <code>#hero-title span:first-child</code>, property <code>text</code>, value <code>Local Investigations...</code>
+          <div class="admin-panel-header">
+            <div>
+              <h2>Home Page</h2>
+              <p>Edit the primary homepage copy, buttons, social links, videos, and image assets.</p>
+            </div>
+            <button class="button primary" type="button" data-save-page="home">Save Home Page</button>
           </div>
+          <form class="admin-content-form" data-page-editor="home">
+            <h3>Hero</h3>
+            <label>Small label<input data-content-field data-selector=".hero .hero-kicker" data-property="text" value="Inland Empire Ghost Hunters" /></label>
+            <label>Main headline line 1<input data-content-field data-selector="#hero-title span:nth-child(1)" data-property="text" value="Local Ghost Investigations" /></label>
+            <label>Main headline line 2<input data-content-field data-selector="#hero-title span:nth-child(2)" data-property="text" value="Live Multi-Camera Monitoring" /></label>
+            <label>Hero paragraph<textarea data-content-field data-selector=".hero-content > p:nth-of-type(2)" data-property="text" rows="3">Respectful, evidence-focused case review for homes, businesses, and historic locations across the Inland Empire.</textarea></label>
+            <div class="admin-field-grid">
+              <label>Primary button text<input data-content-field data-selector=".hero-actions .button.primary" data-property="text" value="Discuss Reported Activity" /></label>
+              <label>Primary button link<input data-content-field data-selector=".hero-actions .button.primary" data-property="href" value="request.html" /></label>
+              <label>Secondary button text<input data-content-field data-selector=".hero-actions .button.secondary" data-property="text" value="Review Our Approach" /></label>
+              <label>Secondary button link<input data-content-field data-selector=".hero-actions .button.secondary" data-property="href" value="approach.html" /></label>
+            </div>
+            <h3>Intro / Positioning</h3>
+            <label>Intro headline<textarea data-content-field data-selector=".intro h2" data-property="text" rows="2">A serious first impression for people dealing with sensitive activity.</textarea></label>
+            <label>Intro paragraph<textarea data-content-field data-selector=".intro-grid > p" data-property="text" rows="3">The site is built around trust: clear case intake, private evidence handling, live multi-camera observation, and a calm process that avoids haunted-attraction language or exaggerated claims.</textarea></label>
+            <h3>Live Monitoring</h3>
+            <label>Monitoring headline<input data-content-field data-selector="#monitoring-title" data-property="text" value="Live Multi-Camera Video Monitoring" /></label>
+            <label>Monitoring paragraph 1<textarea data-content-field data-selector=".monitor-section .premium-feature > div:first-child > p:nth-of-type(2)" data-property="text" rows="3">Fixed camera coverage allows selected areas to be viewed live during an investigation while also recording footage for later review.</textarea></label>
+            <label>Monitoring paragraph 2<textarea data-content-field data-selector=".monitor-section .premium-feature > div:first-child > p:nth-of-type(3)" data-property="text" rows="3">This helps the team observe multiple rooms or areas at the same time and compare reported activity with what was captured on video.</textarea></label>
+            <div class="admin-field-grid">
+              <label>Camera 01 embed URL<input data-content-field data-selector=".feed-screen:nth-child(1) iframe" data-property="src" value="https://www.youtube.com/embed/L1pcuGSt_uk?modestbranding=1&playsinline=1&rel=0" /></label>
+              <label>Camera 02 embed URL<input data-content-field data-selector=".feed-screen:nth-child(2) iframe" data-property="src" value="https://www.youtube.com/embed/7FWX6bC8pSc?modestbranding=1&playsinline=1&rel=0" /></label>
+              <label>Camera 03 embed URL<input data-content-field data-selector=".feed-screen:nth-child(3) iframe" data-property="src" value="https://www.youtube.com/embed/GozfBR0keTY?modestbranding=1&playsinline=1&rel=0" /></label>
+              <label>Camera 04 embed URL<input data-content-field data-selector=".feed-screen:nth-child(4) iframe" data-property="src" value="https://www.youtube.com/embed/F3AO7KDe6Hw?modestbranding=1&playsinline=1&rel=0" /></label>
+            </div>
+            <h3>Mission Control / Privacy / Footer</h3>
+            <label>Mission Control headline<input data-content-field data-selector="#mission-control-title" data-property="text" value="A private command center for evidence review." /></label>
+            <label>Privacy headline<input data-content-field data-selector="#privacy-title" data-property="text" value="Confidential by default, local by design." /></label>
+            <label>Service note<textarea data-content-field data-selector=".service-note" data-property="text" rows="2">Based in the Inland Empire. Serving Riverside County, San Bernardino County, and surrounding communities.</textarea></label>
+            <label>Footer CTA headline<input data-content-field data-selector=".footer-cta h2" data-property="text" value="Ready to document your property professionally?" /></label>
+            <div class="form-status" data-page-status="home" role="status" aria-live="polite"></div>
+          </form>
         </section>
 
         <section class="admin-panel" data-admin-panel="approach">
-          <h2>Our Approach</h2>
-          <p>Use the content editor below or the Website Helper to prepare selector-based changes for this page.</p>
+          <div class="admin-panel-header">
+            <div>
+              <h2>Our Approach</h2>
+              <p>Edit the approach page hero, process copy, timeline labels, standards, and images.</p>
+            </div>
+            <button class="button primary" type="button" data-save-page="approach">Save Our Approach</button>
+          </div>
+          <form class="admin-content-form" data-page-editor="approach">
+            <h3>Hero</h3>
+            <label>Hero label<input data-content-field data-selector="body:has(#approach-title) .page-hero .hero-kicker" data-property="text" value="Our Approach" /></label>
+            <label>Hero headline<textarea data-content-field data-selector="#approach-title" data-property="text" rows="2">Careful observation, controlled documentation, private review.</textarea></label>
+            <label>Hero paragraph<textarea data-content-field data-selector="body:has(#approach-title) .page-hero h1 + p" data-property="text" rows="3">Every case is approached with patience, discretion, and documentation. We do not assume every sound, shadow, or movement is paranormal.</textarea></label>
+            <label>Core principle<textarea data-content-field data-selector="body:has(#approach-title) .intake-summary p" data-property="text" rows="2">Reported activity is compared with video, audio, environmental notes, and ordinary explanations first.</textarea></label>
+            <h3>Method Cards</h3>
+            <label>Method headline<input data-content-field data-selector="#method-title" data-property="text" value="A calm process for sensitive reports." /></label>
+            <div class="admin-field-grid">
+              <label>Card 01 title<input data-content-field data-selector="body:has(#approach-title) .approach-card-grid article:nth-child(1) h3" data-property="text" value="Observe" /></label>
+              <label>Card 01 image URL<input data-content-field data-selector="body:has(#approach-title) .approach-card-grid article:nth-child(1) img" data-property="src" value="assets/approach-observe.jpg" /></label>
+              <label>Card 02 title<input data-content-field data-selector="body:has(#approach-title) .approach-card-grid article:nth-child(2) h3" data-property="text" value="Document" /></label>
+              <label>Card 03 title<input data-content-field data-selector="body:has(#approach-title) .approach-card-grid article:nth-child(3) h3" data-property="text" value="Compare" /></label>
+              <label>Card 03 image URL<input data-content-field data-selector="body:has(#approach-title) .approach-card-grid article:nth-child(3) img" data-property="src" value="assets/approach-compare.jpg" /></label>
+              <label>Card 04 title<input data-content-field data-selector="body:has(#approach-title) .approach-card-grid article:nth-child(4) h3" data-property="text" value="Review Privately" /></label>
+            </div>
+            <h3>What To Expect</h3>
+            <label>Timeline headline<input data-content-field data-selector="#process-title" data-property="text" value="From request to private review." /></label>
+            <div class="admin-field-grid">
+              <label>Step 01<input data-content-field data-selector="body:has(#approach-title) .timeline-list article:nth-child(1) strong" data-property="text" value="Submit a request" /></label>
+              <label>Step 02<input data-content-field data-selector="body:has(#approach-title) .timeline-list article:nth-child(2) strong" data-property="text" value="Details are reviewed" /></label>
+              <label>Step 03<input data-content-field data-selector="body:has(#approach-title) .timeline-list article:nth-child(3) strong" data-property="text" value="Call or walkthrough if needed" /></label>
+              <label>Step 04<input data-content-field data-selector="body:has(#approach-title) .timeline-list article:nth-child(4) strong" data-property="text" value="Investigation may be scheduled" /></label>
+              <label>Step 05<input data-content-field data-selector="body:has(#approach-title) .timeline-list article:nth-child(5) strong" data-property="text" value="Evidence is reviewed privately" /></label>
+              <label>Step 06<input data-content-field data-selector="body:has(#approach-title) .timeline-list article:nth-child(6) strong" data-property="text" value="Public sharing only with permission" /></label>
+            </div>
+            <h3>Standards</h3>
+            <label>Standards headline<input data-content-field data-selector="#standards-title" data-property="text" value="Professional boundaries keep cases organized." /></label>
+            <label>Standard 01 paragraph<textarea data-content-field data-selector="body:has(#standards-title) .standards-grid article:nth-child(1) p" data-property="text" rows="2">Not every request is a good fit. Safety, location access, and client expectations are reviewed first.</textarea></label>
+            <label>Standard 02 paragraph<textarea data-content-field data-selector="body:has(#standards-title) .standards-grid article:nth-child(2) p" data-property="text" rows="2">Claims are compared with recorded footage, audio review, notes, and ordinary explanations.</textarea></label>
+            <label>Standard 03 paragraph<textarea data-content-field data-selector="body:has(#standards-title) .standards-grid article:nth-child(3) p" data-property="text" rows="2">Names, addresses, evidence, and case details are protected unless permission is granted.</textarea></label>
+            <div class="form-status" data-page-status="approach" role="status" aria-live="polite"></div>
+          </form>
         </section>
 
         <section class="admin-panel" data-admin-panel="evidence">
-          <h2>Evidence / YouTube</h2>
-          <p>Update YouTube links by setting iframe <code>src</code> values or watch button <code>href</code> values through content overrides.</p>
+          <div class="admin-panel-header">
+            <div>
+              <h2>Evidence / YouTube</h2>
+              <p>Edit evidence page copy, playlist links, featured embed, and video card text.</p>
+            </div>
+            <button class="button primary" type="button" data-save-page="evidence">Save Evidence Page</button>
+          </div>
+          <form class="admin-content-form" data-page-editor="evidence">
+            <h3>Hero / Channel</h3>
+            <label>Hero headline<textarea data-content-field data-selector="#evidence-title" data-property="text" rows="2">Evidence review without public exposure by default.</textarea></label>
+            <label>Hero paragraph<textarea data-content-field data-selector="body:has(#evidence-title) .page-hero h1 + p" data-property="text" rows="3">Selected investigation clips and evidence reviews are shared through The Paranormal Observer only when sharing is appropriate and permission has been given.</textarea></label>
+            <div class="admin-field-grid">
+              <label>Playlist button link<input data-content-field data-selector="body:has(#evidence-title) .hero-actions .button.primary" data-property="href" value="https://www.youtube.com/playlist?list=PLahbuwJel0WE" /></label>
+              <label>Instagram button link<input data-content-field data-selector="body:has(#evidence-title) .hero-actions .button.secondary:nth-child(2)" data-property="href" value="https://www.instagram.com/inlandempireghost/" /></label>
+              <label>Channel name<input data-content-field data-selector=".channel-card strong" data-property="text" value="The Paranormal Observer" /></label>
+              <label>Channel image URL<input data-content-field data-selector=".channel-card img" data-property="src" value="https://yt3.googleusercontent.com/oHbIG9KjbAaOMv9vDRIAvR634sK2EUbnDQj6IYUD3wiqknBrq0iISiS171hfsJifdKIhkOzR=s240-c-k-c0x00ffffff-no-rj" /></label>
+            </div>
+            <h3>Featured Video</h3>
+            <label>Featured title<input data-content-field data-selector="#featured-video-title" data-property="text" value="Winged anomaly enhanced." /></label>
+            <label>Featured description<textarea data-content-field data-selector="body:has(#featured-video-title) #featured-video-title + p" data-property="text" rows="3">The website playlist opens with an enhanced anomaly review. The full playlist includes second camera angles, Whaley House clips, Victorian house observations, and EVP moments.</textarea></label>
+            <div class="admin-field-grid">
+              <label>Featured iframe URL<input data-content-field data-selector=".video-frame iframe" data-property="src" value="https://www.youtube.com/embed/L1pcuGSt_uk?list=PLahbuwJel0WE" /></label>
+              <label>Featured watch link<input data-content-field data-selector="body:has(#featured-video-title) .text-link" data-property="href" value="https://www.youtube.com/watch?v=L1pcuGSt_uk&list=PLahbuwJel0WE" /></label>
+            </div>
+            <h3>Evidence Submission Copy</h3>
+            <label>Submit section headline<input data-content-field data-selector="#submit-title" data-property="text" value="Send context with every file." /></label>
+            <label>Submit paragraph<textarea data-content-field data-selector="body:has(#submit-title) #submit-title + p" data-property="text" rows="4">For now, evidence should be emailed to evidence@inlandempireghosthunters.com. Photos, videos, audio/EVP recordings, security clips, and written timelines are all useful when they include the right context.</textarea></label>
+            <h3>Playlist Cards</h3>
+            <div class="admin-field-grid">
+              <label>Card 01 title<input data-content-field data-selector=".video-card-grid .video-card:nth-child(1) h3" data-property="text" value="Winged anomaly enhanced" /></label>
+              <label>Card 01 link<input data-content-field data-selector=".video-card-grid .video-card:nth-child(1)" data-property="href" value="https://www.youtube.com/watch?v=L1pcuGSt_uk&list=PLahbuwJel0WE" /></label>
+              <label>Card 02 title<input data-content-field data-selector=".video-card-grid .video-card:nth-child(2) h3" data-property="text" value="Second camera angle" /></label>
+              <label>Card 02 link<input data-content-field data-selector=".video-card-grid .video-card:nth-child(2)" data-property="href" value="https://www.youtube.com/watch?v=7FWX6bC8pSc&list=PLahbuwJel0WE" /></label>
+              <label>Card 03 title<input data-content-field data-selector=".video-card-grid .video-card:nth-child(3) h3" data-property="text" value="Whaley House" /></label>
+              <label>Card 03 link<input data-content-field data-selector=".video-card-grid .video-card:nth-child(3)" data-property="href" value="https://www.youtube.com/watch?v=GozfBR0keTY&list=PLahbuwJel0WE" /></label>
+            </div>
+            <div class="form-status" data-page-status="evidence" role="status" aria-live="polite"></div>
+          </form>
         </section>
 
         <section class="admin-panel" data-admin-panel="request">
-          <h2>Request Investigation</h2>
-          <p>Review evidence request backups in the Inbox. Form delivery currently routes through Formspree and Vercel Blob.</p>
+          <div class="admin-panel-header">
+            <div>
+              <h2>Request Investigation</h2>
+              <p>Edit the request page instructions, notices, bilingual copy, and submit button text.</p>
+            </div>
+            <button class="button primary" type="button" data-save-page="request">Save Request Page</button>
+          </div>
+          <form class="admin-content-form" data-page-editor="request">
+            <h3>Hero</h3>
+            <label>Hero label<input data-content-field data-selector="body:has(#request-title) .page-hero .hero-kicker" data-property="text" value="Submit Evidence / Request an Investigation" /></label>
+            <label>Hero headline<input data-content-field data-selector="#request-title" data-property="text" value="Tell us what has been happening." /></label>
+            <label>Hero paragraph<textarea data-content-field data-selector="body:has(#request-title) .page-hero h1 + p" data-property="text" rows="3">A confidential intake form for homes, businesses, historic locations, cemeteries, and sensitive private properties across the Inland Empire.</textarea></label>
+            <h3>Sidebar Notices</h3>
+            <label>Private evidence upload note<textarea data-content-field data-selector=".request-copy .notice:nth-child(1) p" data-property="text" rows="3">Files are uploaded to private case storage. After submitting, one prepared email lets the team know the case is ready to review.</textarea></label>
+            <label>Please include list<textarea data-content-field data-selector=".request-copy .notice:nth-child(2) ul" data-property="html" rows="6"><li>Date and time of the evidence</li><li>Location or room where it happened</li><li>What you noticed</li><li>Whether anyone else was present</li><li>Possible normal explanations, including pets, cars, wind, plumbing, neighbors, insects, dust, reflections, or electronics</li></textarea></label>
+            <label>Spanish section<textarea data-content-field data-selector=".request-copy .spanish p" data-property="text" rows="3">Puede contactarnos en español para solicitar una investigación o compartir lo que está ocurriendo en su hogar o negocio.</textarea></label>
+            <h3>Form Copy</h3>
+            <label>Evidence note<textarea data-content-field data-selector=".form-note" data-property="text" rows="3">Select any evidence types you have, then upload files here with this request. The team will review your submission privately.</textarea></label>
+            <label>Submit button text<input data-content-field data-selector="#investigation-form button[type='submit']" data-property="text" value="Submit Private Case Intake" /></label>
+            <div class="form-status" data-page-status="request" role="status" aria-live="polite"></div>
+          </form>
         </section>
 
         <section class="admin-panel" data-admin-panel="join">
-          <h2>Join the Team</h2>
-          <p>Support-work submissions are saved to the Inbox and sent through the support Formspree endpoint.</p>
+          <div class="admin-panel-header">
+            <div>
+              <h2>Join the Team</h2>
+              <p>Edit the join page copy, role cards, image cards, and interest form wording.</p>
+            </div>
+            <button class="button primary" type="button" data-save-page="join">Save Join Page</button>
+          </div>
+          <form class="admin-content-form" data-page-editor="join">
+            <h3>Hero</h3>
+            <label>Hero headline<input data-content-field data-selector="#join-title" data-property="text" value="Selective opportunities for dependable people." /></label>
+            <label>Hero paragraph<textarea data-content-field data-selector="body:has(#join-title) .page-hero h1 + p" data-property="text" rows="3">Inland Empire Ghost Hunters occasionally considers dependable individuals interested in field investigation, research, equipment support, and evidence review.</textarea></label>
+            <label>Hero card paragraph<textarea data-content-field data-selector="body:has(#join-title) .intake-summary p" data-property="text" rows="2">Patience, discretion, respect for private homes, and confidentiality are more important than hype.</textarea></label>
+            <h3>Team Roles</h3>
+            <label>Roles headline<textarea data-content-field data-selector="#roles-title" data-property="text" rows="2">Support the work without turning private cases into a show.</textarea></label>
+            <div class="admin-field-grid">
+              <label>Role 01 title<input data-content-field data-selector=".team-role-grid article:nth-child(1) h3" data-property="text" value="Field support" /></label>
+              <label>Role 01 text<textarea data-content-field data-selector=".team-role-grid article:nth-child(1) p" data-property="text" rows="3">Help with setup, observation, note-taking, and respectful movement through private locations.</textarea></label>
+              <label>Role 02 title<input data-content-field data-selector=".team-role-grid article:nth-child(2) h3" data-property="text" value="Research" /></label>
+              <label>Role 02 text<textarea data-content-field data-selector=".team-role-grid article:nth-child(2) p" data-property="text" rows="3">Organize timelines, property context, client notes, and follow-up materials for case review.</textarea></label>
+              <label>Role 03 title<input data-content-field data-selector=".team-role-grid article:nth-child(3) h3" data-property="text" value="Evidence review" /></label>
+              <label>Role 03 text<textarea data-content-field data-selector=".team-role-grid article:nth-child(3) p" data-property="text" rows="3">Assist with careful review of footage, audio, and notes without jumping to conclusions.</textarea></label>
+            </div>
+            <h3>Specialty Cards</h3>
+            <label>Spiritualist / intuitive card text<textarea data-content-field data-selector=".team-image-role p" data-property="text" rows="3">We welcome mediums, clairvoyants, sensitives, and intuitive investigators who offer respectful insight while we continue to document evidence carefully and objectively.</textarea></label>
+            <label>Spiritualist image URL<input data-content-field data-selector=".team-image-role img" data-property="src" value="assets/team-mediums-intuitive.jpg" /></label>
+            <label>Video editor image URL<input data-content-field data-selector=".team-video-card img" data-property="src" value="assets/team-video-editor-wanted.jpg" /></label>
+            <h3>Interest Form</h3>
+            <label>Good fit headline<textarea data-content-field data-selector="#fit-title" data-property="text" rows="2">Dependable, calm, confidential, and respectful.</textarea></label>
+            <label>Interest card title<input data-content-field data-selector=".request-teaser-card strong" data-property="text" value="Interested?" /></label>
+            <label>Interest card paragraph<textarea data-content-field data-selector=".request-teaser-card > p" data-property="text" rows="2">Send a short note about your background, interests, and why you want to help.</textarea></label>
+            <label>Submit button text<input data-content-field data-selector=".support-form button[type='submit']" data-property="text" value="Send Interest Form" /></label>
+            <div class="form-status" data-page-status="join" role="status" aria-live="polite"></div>
+          </form>
         </section>
 
         <section class="admin-panel" data-admin-panel="media">

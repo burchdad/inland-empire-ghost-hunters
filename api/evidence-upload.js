@@ -1,4 +1,5 @@
 import { handleUpload } from '@vercel/blob/client';
+import { withWebHandler } from './_web-adapter.js';
 
 const MAX_FILE_SIZE = 100 * 1024 * 1024;
 const MAX_FILES_PER_CASE = 6;
@@ -46,7 +47,7 @@ function parsePayload(clientPayload) {
   }
 }
 
-export default async function handler(request) {
+async function handler(request) {
   if (request.method !== 'POST') {
     return Response.json({ error: 'Method not allowed' }, { status: 405 });
   }
@@ -101,3 +102,5 @@ export default async function handler(request) {
     return Response.json({ error: error.message }, { status: 400 });
   }
 }
+
+export default withWebHandler(handler);

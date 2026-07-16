@@ -5,8 +5,9 @@ import {
   serverError,
   unauthorized,
 } from './_admin-utils.js';
+import { withWebHandler } from './_web-adapter.js';
 
-export default async function handler(request) {
+async function handler(request) {
   try {
     const admin = requireAdmin(request);
 
@@ -25,3 +26,5 @@ export default async function handler(request) {
     return serverError(error);
   }
 }
+
+export default withWebHandler(handler);

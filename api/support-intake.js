@@ -1,8 +1,9 @@
 import { json, saveInboxRecord, serverError } from './_admin-utils.js';
+import { withWebHandler } from './_web-adapter.js';
 
 const FORMSPREE_SUPPORT_ENDPOINT = 'https://formspree.io/f/xqerepna';
 
-export default async function handler(request) {
+async function handler(request) {
   if (request.method !== 'POST') {
     return json({ error: 'Method not allowed' }, 405);
   }
@@ -46,3 +47,5 @@ export default async function handler(request) {
     return serverError(error);
   }
 }
+
+export default withWebHandler(handler);

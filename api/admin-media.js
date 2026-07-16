@@ -5,6 +5,7 @@ import {
   serverError,
   unauthorized,
 } from './_admin-utils.js';
+import { withWebHandler } from './_web-adapter.js';
 
 const MAX_MEDIA_SIZE = 50 * 1024 * 1024;
 const allowedMediaTypes = new Set([
@@ -25,7 +26,7 @@ function sanitizeFileName(fileName) {
     .slice(0, 100) || 'media-file';
 }
 
-export default async function handler(request) {
+async function handler(request) {
   try {
     const admin = requireAdmin(request);
 
@@ -71,3 +72,5 @@ export default async function handler(request) {
     return serverError(error);
   }
 }
+
+export default withWebHandler(handler);
